@@ -47,7 +47,7 @@ mod.fakm$centroids
 mod.fakm$params
 
 ## plot data IPM
-plot(dt, col = mod.fakm$labels, pch=mod.fakm$labels, main = paste0("Dataset Human Depelopment Index (IPM)"))
+plot(dt, col = mod.fakm$labels, pch=mod.fakm$labels, main = paste0("Dataset Human Development Index (IPM)"))
 
 ```
 
