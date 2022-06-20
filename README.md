@@ -1,4 +1,4 @@
-# fakmct
+# FAKMCT
 Fuzzy Adaptive Resonance Theory K-Means Clustering Technique (FAKMCT)
 
 ## Authors
@@ -12,6 +12,44 @@ Alfi Nurrahmah <221810140@stis.ac.id>
 ## Functions
 
 fakmct : A set of function for clustering data observation with hybrid method Fuzzy ART and K-Means
+
+## Examples 
+
+```{r}
+library(fakmct)
+# Using dataset iris
+## load data
+data.inputs = iris[,-5]
+true.labels = as.numeric(unlist(iris$Species))
+
+## run model data
+ex.iris<-fakmct(data.inputs, alpha = 0.3, rho = 0.5, beta = 1, max_epochs = 50, max_clusters = 5)
+ex.iris$labels
+ex.iris$size
+ex.iris$centroids
+ex.iris$params
+
+## plot data
+plot(data.inputs, col = ex.iris$labels, pch = true.labels,
+     main = paste0("Dataset: Iris"))
+
+# Using data IPM 2019
+
+## load simulate data IPM
+data("simulatedataIPM")
+dt <- simulatedataIPM
+
+## run model data IPM
+mod.fakm<-fakmct(dt, alpha = 0.3, rho = 0.5, beta = 0.1, max_epochs = 50, max_clusters = 5)
+mod.fakm$labels
+mod.fakm$size
+mod.fakm$centroids
+mod.fakm$params
+
+## plot data IPM
+plot(dt, col = mod.fakm$labels, pch=mod.fakm$labels, main = paste0("Dataset Human Depelopment Index (IPM)"))
+
+```
 
 ## References
 
