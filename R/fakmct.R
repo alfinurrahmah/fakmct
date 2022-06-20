@@ -25,7 +25,7 @@
 #' @export
 #' @importFrom stats runif
 #'
-#'@examples
+#' @examples
 #' library(fakmct)
 #' # Using dataset iris
 #' ## load data
@@ -58,9 +58,6 @@
 #'
 #' ## plot data IPM
 #' plot(dt, col = mod.fakm$labels, pch=mod.fakm$labels, main = paste0("Dataset IPM"))
-
-
-
 
 fakmct <- function(input, rho, alpha, beta, w_init = NA,
                    max_epochs = 1000, max_clusters = 1000, eps = 10^-6)
@@ -99,7 +96,6 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
     for (j in 1:m) {
       matches[j] = choice_function(input, w[j,], alpha)
     }
-
     match_iterations = 0
     while (match_iterations<length(matches))
     {
@@ -179,7 +175,6 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
   ## Training Fuzzy ART neural network
   fuzzyart_training <- function(input, rho, alpha, beta, w_init = NA,  max_epochs = 1000, max_clusters = 20, eps = 10^-6)
   {
-
     start_time = Sys.time()
     ## save parameters
     params = list()
@@ -190,7 +185,6 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
     params[["w_init"]]      = w_init
 
     ## check input data
-
     if(is.data.frame(input)){(input=as.matrix(input))}
     if (is.numeric(input))
     {
@@ -233,9 +227,7 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
 
     while (((sum(w_old-w)^2)>eps^2) & (iterations < max_epochs))
     {
-
       w_old = w
-
       for(i in index)
       {
         train_output_fa <- learn_pattern(dataset[i,], w, rho, alpha, beta, num_clusters,
@@ -245,10 +237,8 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
         dimnames(cluster_labels)[1]<-dimnames(input)[1]
         w <- train_output_fa$w
         num_clusters <- train_output_fa$num_clusters
-
       }
       iterations = iterations+1
-
       if(num_clusters_old != num_clusters)
       {
         w_old = rbind(w_old,replicate(n = num_features*2, rep(1,num_clusters-num_clusters_old)))
@@ -297,7 +287,7 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
     start_time = Sys.time()
     if(is.null(FuzzyArt_Out)) stop("Error. Need to specify FuzzyArt_Out as a FuzzyART model as trained by FuzzyART_train")
 
-    # check parameter
+    # check input data
     if(is.data.frame(input)){(input=as.matrix(input))}
     if (is.numeric(input))
     {
@@ -305,15 +295,13 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
       normalized_data <- normalize_data(input)
     } else {stop("Error. Input data is not numeric")}
 
-
     # complement code conversion
     dataset <- complement_coded_conv(normalized_data)
     num_clusters = FuzzyArt_Out$num_clusters
 
     cluster_labels = matrix(rep(NA, dim(input)[1]))
     cluster_labels = matrix(apply(dataset, MARGIN = 1,FUN = function(dataset){return(category_winner(input = dataset,w = FuzzyArt_Out$w,
-                                                                                                     alpha = FuzzyArt_Out$params$alpha,
-                                                                                                     rho = FuzzyArt_Out$params$rho))}))
+                                                                                      alpha = FuzzyArt_Out$params$alpha,rho = FuzzyArt_Out$params$rho))}))
     num_clusters = FuzzyArt_Out$num_clusters
     dimnames(cluster_labels)[1]<-dimnames(input)[1]
 
@@ -406,7 +394,6 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
     return(Kmeans_Res)
   }
 
-
   FuzzyArt_Out = list(NA)
   FuzzyArt_Out <- fuzzyart_training(input, rho, alpha, beta, w_init, max_epochs, max_clusters)
   FuzzyArt_Res = list(NA)
@@ -427,8 +414,5 @@ fakmct <- function(input, rho, alpha, beta, w_init = NA,
   fakmct_res[["num_clusters"]] = FuzzyArt_Res$num_clusters
   fakmct_res[["running_time"]]= running_time
   return(fakmct_res)
-
 }
-
-
 
