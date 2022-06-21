@@ -6,7 +6,7 @@ Author: Alfi Nurrahmah [aut, cre]
         Budi Yuniarto [aut]
 Maintainer: Alfi Nurrahmah <221810140@stis.ac.id>
 Description: A set of function for clustering data observation with hybrid method Fuzzy ART and K-Means 
-            by Sengupta, Ghosh & Dan (2011) <http://dx.doi.org/10.1080/0951192X.2011.602362>.
+            by Sengupta, Ghosh & Dan (2011) <doi:10.1080/0951192X.2011.602362>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
