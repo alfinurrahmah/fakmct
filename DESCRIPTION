@@ -2,7 +2,7 @@ Package: fakmct
 Type: Package
 Title: Fuzzy Adaptive Resonance Theory K-Means Clustering Technique
 Version: 0.1.0
-Author: Alfi Nurrahmah
+Author: Alfi Nurrahmah and Budi Yuniarto
 Maintainer: Alfi Nurrahmah <221810140@stis.ac.id>
 Description: A set of function for clustering data observation with hybrid method Fuzzy ART and K-Means 
             by Sengupta, Ghosh & Dan (2011) <http://dx.doi.org/10.1080/0951192X.2011.602362>.
