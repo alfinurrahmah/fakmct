@@ -1,5 +1,5 @@
 # FAKMCT
-Fuzzy Adaptive Resonance Theory K-Means Clustering Technique (FAKMCT)
+Fuzzy Adaptive Resonance Theory K-Means Clustering Technique (FAKMCT) (<https://CRAN.R-project.org/package=fakmct>)
 
 ## Authors
 
