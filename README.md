@@ -12,7 +12,7 @@ Alfi Nurrahmah <221810140@stis.ac.id>
 ## Functions
 
 fakmct : A set of function for clustering data observation with hybrid method Fuzzy ART and K-Means
-         by Sengupta, Ghosh & Dan (2011) (<doi:10.1080/0951192X.2011.602362>).
+         by Sengupta, Ghosh & Dan (2011).
 
 ## Examples 
 Package references manual [fakmct.pdf](https://cran.rstudio.com/web/packages/fakmct/fakmct.pdf) 
